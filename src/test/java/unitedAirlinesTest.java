@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class soundIdTest {
+public class unitedAirlinesTest {
 
     static WebDriver driver;
 
@@ -29,7 +29,7 @@ public class soundIdTest {
             driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
     }
     @Test
-    public void loginTest() {
+    public void searchFlightTest() {
 
         // predefined variables
         String baseUrl = "https://www.united.com";    // web page
@@ -44,9 +44,6 @@ public class soundIdTest {
         String fromAirportInput = "New York, NY, US (JFK)";
         String toAirportInput = "Miami, FL, US (MIA - All Airports)";
         String departDateValue = "OCT 01";
-
-
-
 
         // opening page and input data
         driver.get(baseUrl);
