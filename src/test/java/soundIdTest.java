@@ -38,51 +38,47 @@ public class soundIdTest {
         By destinationAirport = By.id("bookFlightDestinationInput"); // destination
         By departDate = By.id("DepartDate");
         By fareType = By.id("column-ECO-BASIC");
+        By showAllResults = By.id("a-results-show-all");
 
+        // input data
         String fromAirportInput = "New York, NY, US (JFK)";
         String toAirportInput = "Miami, FL, US (MIA - All Airports)";
         String departDateValue = "OCT 01";
 
 
-        // opening page:
+
+
+        // opening page and input data
         driver.get(baseUrl);
-
-        //click on my account
         driver.findElement(oneway).click();
-
-        //input from
         driver.findElement(fromAirport).sendKeys(Keys.CONTROL + "a");
         driver.findElement(fromAirport).sendKeys(Keys.DELETE);
         driver.findElement(fromAirport).sendKeys(fromAirportInput);
         driver.findElement(destinationAirport).sendKeys(toAirportInput);
-
-        //input date
         driver.findElement(departDate).sendKeys(Keys.CONTROL + "a");
         driver.findElement(departDate).sendKeys(Keys.DELETE);
         driver.findElement(departDate).sendKeys(departDateValue);
         driver.findElement(departDate).submit();
 
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        WebElement table = driver.findElement(By.xpath("//*[@id=\"flight-result-list-revised\"]"));
-//        List<WebElement> rows = table.findElements(By.tagName("li"));
-
-      driver.findElement(By.id("a-results-show-all")).click();
+        // results page
+        driver.findElement(showAllResults).click();
         driver.findElement(fareType).click();
 
         List<WebElement> getTableDepartData = driver.findElements(By.className("flight-time-depart"));
         List<WebElement> getTableArriveData = driver.findElements(By.className("flight-time-arrive"));
+        List<WebElement> getTableStopsData = driver.findElements(By.className("flight-connection-container"));
         List<WebElement> getTableFlightData = driver.findElements(By.className("flight-duration"));
         List<WebElement> getTableEcoPrice = driver.findElements(By.cssSelector("[id*=sr_product_ECO-BASIC]"));
 
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
-  //          for (int i = 1; i < getTableEcoPrice.size(); i++) {
-            for (int i = 0; i < 2; i++) {
-                System.out.println(getTableDepartData.get(i).getText());
-                System.out.println(getTableArriveData.get(i).getText());
-               System.out.println(getTableFlightData.get(i).getText());
-               System.out.println(getTableEcoPrice.get(i).getText());
-
-//                System.out.println(gson.toJson(getTableDepartData.get(i).getText()) + gson.toJson(getTableArriveData.get(i).getText()) + gson.toJson(getTableFlightData.get(i).getText()) + gson.toJson(getTableEcoPrice.get(i).getText()));
+            for (int i = 0; i < getTableEcoPrice.size(); i++)
+            {
+              System.out.println(gson.toJson(getTableDepartData.get(i).getText()) +
+                      gson.toJson(getTableArriveData.get(i).getText()) +
+                      gson.toJson(getTableFlightData.get(i).getText()) +
+                      gson.toJson(getTableStopsData.get(i).getText()) +
+                      gson.toJson(getTableEcoPrice.get(i).getText()));
             }
         }
 
