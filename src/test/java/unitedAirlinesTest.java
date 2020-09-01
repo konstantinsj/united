@@ -24,9 +24,9 @@ public class unitedAirlinesTest {
     @BeforeClass
     public static void setup()
     {
-            System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver\\chromedriver.exe");
-            driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
     }
     @Test
     public void searchFlightTest() {
