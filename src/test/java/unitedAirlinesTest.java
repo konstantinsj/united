@@ -28,6 +28,13 @@ public class unitedAirlinesTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
     }
+
+    @AfterClass
+    public static void tearDown()
+    {
+        driver.close();
+    }
+
     @Test
     public void searchFlightTest() {
 
@@ -84,11 +91,5 @@ public class unitedAirlinesTest {
         {
             System.out.println("No Data Found");
         }
-    }
-
-    @AfterClass
-    public static void tearDown()
-    {
-        driver.close();
     }
 }
