@@ -20,11 +20,11 @@ public class ResultPage extends UnitedAirlinesTest {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             for (int i = 0; i < getTableEcoPrice.size(); i++) {
-                System.out.println(gson.toJson(getTableDepartData.get(i).getText()) +
-                        gson.toJson(getTableArriveData.get(i).getText()) +
-                        gson.toJson(getTableFlightData.get(i).getText()) +
-                        gson.toJson(getTableStopsData.get(i).getText()) +
-                        gson.toJson(getTableEcoPrice.get(i).getText()));
+                System.out.println(gson.toJson(getTableDepartData.get(i).getText().replace("\n", "")) + " " +
+                        gson.toJson(getTableArriveData.get(i).getText().replace("\n", " ")) + " " +
+                        gson.toJson(getTableFlightData.get(i).getText().replace("\n", " ")) + " " +
+                        gson.toJson(getTableStopsData.get(i).getText().replace("\n", " ")) + " " +
+                        gson.toJson(getTableEcoPrice.get(i).getText().replace("\n", " ")));
             }
         } catch
         (Exception e) {
