@@ -1,26 +1,6 @@
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
-
-public class UnitedAirlinesTest {
-
-    static WebDriver driver;
-
-    @BeforeClass
-    public static void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
-    }
-
-    @AfterClass
-    public static void tearDown() {
-        driver.close();
-    }
+public class UnitedAirlinesTest extends WebdriverParameters {
 
     @Test
     public void searchFlightTest() {
@@ -31,10 +11,9 @@ public class UnitedAirlinesTest {
         boolean isOneWay = true;
 
         // test itself
-        HomePage home = new HomePage(driver);
-        home.inputFlightData(driver, fromAirportInput, toAirportInput, departDateInput, isOneWay);
+        HomePage home = new HomePage();
+        home.inputFlightData(fromAirportInput, toAirportInput, departDateInput, isOneWay);
         ResultPage resultPage = new ResultPage();
-        resultPage.printResults(driver);
+        resultPage.printResults();
     }
 }
-
