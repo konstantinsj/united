@@ -1,5 +1,4 @@
-1. Install Nightwatchjs ( http://nightwatchjs.org/ )
-2. Using Nightwatch, write a script for automated test to:
+Test case:
 a. Navigate to https://www.united.com
 b. Fill the search criteria:
 i. One-way flight
@@ -14,3 +13,7 @@ price only) data in a json object.
 iii. If the flight is not available for Price criteria: (Economy (Most Restricted),
 filter the flight data out of the json object
 iv. Print the final json object in the console.
+
+How to run:
+1. You ll need chromedriver.
+2. Run with "maven clean test" command.
